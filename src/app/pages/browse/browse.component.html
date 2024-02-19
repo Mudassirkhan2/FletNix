@@ -1,1 +1,20 @@
-<p>browse works!</p>
+<app-header />
+<div
+    class="grid items-center grid-cols-1 mt-4 mb-4 md:grid-cols-2 md:gap-2 lg:gap-4 lg:grid-cols-4 max-w-[90rem] mx-auto">
+    @for (item of movies; track movies._id) {
+    <div class="p-2 border-2 rounded-2xl md:p-4  h-[200px] ">
+        <p>
+            Type : {{ item.type }}
+        </p>
+        <h1>
+            {{ item.type }} Name : {{ item.title }}
+        </h1>
+
+    </div>
+    }
+
+
+</div>
+<mat-paginator [length]="lengthItems" [pageSize]="15" [showFirstLastButtons]="true" [pageIndex]="currentPage"
+    (page)="handlePage($event)">
+</mat-paginator>
