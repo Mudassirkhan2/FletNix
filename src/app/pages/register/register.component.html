@@ -1,31 +1,47 @@
-<main class="flex flex-col items-center justify-center min-h-screen">
-    <form [formGroup]="registerForm" class="flex flex-col items-center justify-center gap-2 md:justify-end"
-        (ngSubmit)="onSubmit()">
-        <div class="flex flex-col gap-1 ">
-            <label for="email">
-                Email
-            </label>
-            <input type="email" name="email" placeholder="johndoe@gmail.com" class="p-2 rounded-md  w-[250px]" required
-                formControlName="email">
+<main class="relative flex flex-col items-center justify-center min-h-screen ">
+    <div class="absolute top-0 bottom-0 left-0 right-0 min-h-screen -z-10">
+        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/becb4b4a-fa87-47ab-b92b-aae2c1c6d6f7/SG-en-20231023-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+            alt="cover image " class="object-cover w-full h-full">
+    </div>
+    <section
+        class="glassmorphismCard p-4 rounded-md shadow-lg bg-white w-[300px] min-h-[350px] md:w-[400px] md:min-h-[450px]">
+        <h1 class="font-mono text-2xl font-bold tracking-wider md:text-4xl">
+            Sign Up
+        </h1>
+        <form [formGroup]="registerForm"
+            class="flex flex-col items-center justify-center gap-2 text-white md:justify-end" (ngSubmit)="onSubmit()">
+            <div class="flex flex-col gap-1 ">
+                <label for="email">
+                    Email
+                </label>
+                <input type="email" name="email" placeholder="johndoe@gmail.com"
+                    class="p-2 rounded-md  w-[250px] text-black" required formControlName="email">
+            </div>
+            <div class="flex flex-col gap-1 mt-4">
+                <label for="password">
+                    Password
+                </label>
+                <input name="password" type="password" placeholder="********"
+                    class="p-2 rounded-md  w-[250px]text-black" formControlName="password" minlength="6" required>
+            </div>
+            <div class="flex flex-col gap-1 mt-4">
+                <label for="age">
+                    Age
+                </label>
+                <input name="age" type="number" placeholder="age" class="p-2 rounded-md  w-[250px] text-black"
+                    formControlName="age" required min="0">
+            </div>
+            <ng-container *ngIf="error">
+                <p class="text-red-400">{{errorMessage}}</p>
+            </ng-container>
+            <button type="submit" class="p-2 px-4 mt-2 text-white bg-blue-400 rounded-md">Register</button>
+        </form>
+        <div class="mt-2 md:mt-4 ">
+            <a [routerLink]="['/login']">
+                <span class="text-center text-blue-400 ">
+                    Already have an account?
+                </span>
+            </a>
         </div>
-        <div class="flex flex-col gap-1 mt-4">
-            <label for="password">
-                Password
-            </label>
-            <input name="password" type="password" placeholder="********" class="p-2 rounded-md  w-[250px]"
-                formControlName="password" minlength="6" required>
-        </div>
-        <div class="flex flex-col gap-1 mt-4">
-            <label for="age">
-                Age
-            </label>
-            <input name="age" type="number" placeholder="age" class="p-2 rounded-md  w-[250px]" formControlName="age"
-                required min="0">
-        </div>
-        <ng-container *ngIf="error">
-            <p class="text-red-400">{{errorMessage}}</p>
-        </ng-container>
-        <button type="submit" class="p-2 mt-2 text-white bg-blue-400 rounded-md">Register</button>
-    </form>
-    <a href="/login" class="mt-2 text-blue-400">Already have an account?</a>
+    </section>
 </main>

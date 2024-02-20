@@ -7,28 +7,28 @@
         <h1 class="text-2xl font-bold md:text-3xl">
             Login
         </h1>
-        <form [formGroup]="loginForm" class="flex flex-col items-center justify-center gap-2 md:justify-end "
+        <form [formGroup]="loginForm" class="flex flex-col items-center justify-center gap-2 text-white md:justify-end "
             (ngSubmit)="onSubmit()">
             <div class="flex flex-col gap-1 ">
                 <label for="email">
                     Email
                 </label>
-                <input type="email" name="email" placeholder="johndoe@gmail.com" class="p-2 rounded-md  w-[250px]"
-                    required formControlName="email">
+                <input type="email" name="email" placeholder="johndoe@gmail.com"
+                    class="p-2 rounded-md text-black w-[250px]" required formControlName="email">
             </div>
             <div class="flex flex-col gap-1 mt-4">
                 <label for="password">
                     Password
                 </label>
-                <input name="password" type="password" placeholder="********" class="p-2 rounded-md  w-[250px]"
-                    formControlName="password" minlength="6" required>
+                <input name="password" type="password" placeholder="********"
+                    class="p-2 text-black rounded-md  w-[250px]" formControlName="password" minlength="6" required>
             </div>
             <ng-container *ngIf="error">
                 <p class="text-red-400">{{errorMessage}}</p>
             </ng-container>
             <button type="submit" class="p-2 px-4 mt-2 text-white bg-blue-400 rounded-md">Login</button>
         </form>
-        <a href="/register" class="mt-2 text-center text-blue-400 md:!mt-8 ">Don't have an account?</a>
+        <a [routerLink]="['/register']" class="mt-2 text-center text-blue-400 md:!mt-8 ">Don't have an account?</a>
     </section>
 
 </main>
