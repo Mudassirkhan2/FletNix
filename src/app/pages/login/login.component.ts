@@ -49,7 +49,7 @@ export class LoginComponent {
   }
   login() {
     console.log('Login');
-    this.http.post<any>('http://localhost:3000/user/login', {
+    this.http.post<any>('https://fletnix-6srj.onrender.com/user/login', {
       email: this.email,
       password: this.password
     }).subscribe((res) => {

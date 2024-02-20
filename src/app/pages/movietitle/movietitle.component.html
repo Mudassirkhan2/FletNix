@@ -1,7 +1,9 @@
-<main class="max-w-[90rem] mx-auto flex items-center justify-center min-h-screen">
-    <div>
-        <h2>{{ movieDetails[0].title }}</h2>
-        <p>Type: {{ movieDetails[0].type }}</p>
+<main class="flex items-center justify-center min-h-screen mx-auto dottedBackground">
+    <div class="p-4 text-white border border-gray-600 rounded-md shadow-xl w-[95%] lg:w-[55%]">
+        <h2 class="!text-xl md:!text-2xl lg:!text-5xl">{{ movieDetails[0].title }}</h2>
+        <p><span class="mx-2"> {{ movieDetails[0].date_added }}</span> * <span class="mx-2">{{
+                movieDetails[0].release_year }} </span>*<span class="mx-2">
+                {{movieDetails[0].duration}}</span></p>
         <ng-container *ngIf="movieDetails[0].director">
             <p>Director: {{ movieDetails[0].director }}</p>
         </ng-container>
@@ -9,11 +11,17 @@
             <p>No director information available for this movie.</p>
         </ng-container>
         <p>Cast: {{ movieDetails[0].cast }}</p>
-        <p>Date Added: {{ movieDetails[0].date_added }}</p>
-        <p>Release Year: {{ movieDetails[0].release_year }}</p>
+
         <p>Rating: {{ movieDetails[0].rating }}</p>
-        <p>Duration: {{ movieDetails[0].duration }}</p>
         <p>Listed In: {{ movieDetails[0].listed_in }}</p>
-        <p>Description: {{ movieDetails[0].description }}</p>
+        <p> <span class="!text-gray-300">
+                {{ movieDetails[0].description }}
+            </span></p>
+        <div class="mt-4 !md:mt-16 flex justify-end">
+            <a [routerLink]="['/']"
+                class="p-2 px-4 border rounded-md text-end bg-[#22a6b3] hover:bg-[#7ed6df] shadow-xl transition-all delay-300 ease-in-out hover:text-gray-700">
+                go back
+            </a>
+        </div>
     </div>
 </main>

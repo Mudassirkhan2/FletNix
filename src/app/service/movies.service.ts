@@ -9,6 +9,6 @@ export class MoviesService {
 
   constructor(private http: HttpClient) { }
   fetchMovie(title: string) {
-    return this.http.get<any[]>(`http://localhost:3000/${title}`, {});
+    return this.http.get<any[]>(`https://fletnix-6srj.onrender.com/${title}`, {});
   }
 }

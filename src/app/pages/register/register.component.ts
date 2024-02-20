@@ -62,7 +62,7 @@ export class RegisterComponent {
   }
 
   signup() {
-    this.http.post('http://localhost:3000/user/signup', {
+    this.http.post('https://fletnix-6srj.onrender.com/user/signup', {
       email: this.email,
       password: this.password,
       age: this.age

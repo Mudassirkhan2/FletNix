@@ -4,16 +4,31 @@ import { HttpClient } from '@angular/common/http';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-browse',
   standalone: true,
-  imports: [MatPaginatorModule, RouterModule, ReactiveFormsModule, FormsModule,],
+  imports: [MatPaginatorModule, RouterModule, ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.css'
 })
 
 export class BrowseComponent implements OnInit {
+  isLoading = true;
+  loadingMessages = ['Fetching data...',
+    'Please wait...',
+    'Hold on...',
+    'Gathering info...',
+    'Loading from server...',
+    'Just a moment...',
+    'Getting ready...',
+    'Sit tight...',
+    'Fetching updates...',
+    'Waiting to load...',];
+  loadingMessage = this.loadingMessages[0];
+  loadingMessageIndex = 0;
+  loadingIntervalId: any;
   currentPage = 0;
   pageSize = 15;
   moviesdata: any = [];
@@ -22,6 +37,7 @@ export class BrowseComponent implements OnInit {
   searchValue = '';
   filterValue = '';
   userId: string | null = '';
+
   searchForm = this.fb.nonNullable.group({
     searchValue: ''
   });
@@ -85,13 +101,27 @@ export class BrowseComponent implements OnInit {
     });
   }
   fetchMovies() {
+    this.isLoading = true;
+    this.startLoadingMessages();
     this.userId = localStorage.getItem('userId');
     console.log(this.userId)
-    this.http.get(`http://localhost:3000/movies/${this.userId}`, {}).subscribe((res) => {
+    this.http.get(`https://fletnix-6srj.onrender.com/movies/${this.userId}`, {}).subscribe((res) => {
       this.moviesdata = res;
       console.log(this.moviesdata)
       this.lengthItems = this.moviesdata.length;
       this.movies = this.moviesdata.slice(0, this.pageSize);
+      this.isLoading = false;
+      this.stopLoadingMessages();
     });
+  }
+
+  startLoadingMessages() {
+    this.loadingIntervalId = setInterval(() => {
+      this.loadingMessageIndex = (this.loadingMessageIndex + 1) % this.loadingMessages.length;
+      this.loadingMessage = this.loadingMessages[this.loadingMessageIndex];
+    }, 2000);
+  }
+  stopLoadingMessages() {
+    clearInterval(this.loadingIntervalId);
   }
 }

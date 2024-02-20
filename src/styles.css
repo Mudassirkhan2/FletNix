@@ -10,6 +10,7 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: #49009B;
+    background-color: #130f40;
+    /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
 
 }
