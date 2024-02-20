@@ -1,0 +1,19 @@
+<main class="max-w-[90rem] mx-auto flex items-center justify-center min-h-screen">
+    <div>
+        <h2>{{ movieDetails[0].title }}</h2>
+        <p>Type: {{ movieDetails[0].type }}</p>
+        <ng-container *ngIf="movieDetails[0].director">
+            <p>Director: {{ movieDetails[0].director }}</p>
+        </ng-container>
+        <ng-container *ngIf="!movieDetails[0].director">
+            <p>No director information available for this movie.</p>
+        </ng-container>
+        <p>Cast: {{ movieDetails[0].cast }}</p>
+        <p>Date Added: {{ movieDetails[0].date_added }}</p>
+        <p>Release Year: {{ movieDetails[0].release_year }}</p>
+        <p>Rating: {{ movieDetails[0].rating }}</p>
+        <p>Duration: {{ movieDetails[0].duration }}</p>
+        <p>Listed In: {{ movieDetails[0].listed_in }}</p>
+        <p>Description: {{ movieDetails[0].description }}</p>
+    </div>
+</main>
