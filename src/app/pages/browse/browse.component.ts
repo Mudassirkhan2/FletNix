@@ -21,6 +21,7 @@ export class BrowseComponent implements OnInit {
   lengthItems = 500;
   searchValue = '';
   filterValue = '';
+  userId: string | null = '';
   searchForm = this.fb.nonNullable.group({
     searchValue: ''
   });
@@ -84,7 +85,9 @@ export class BrowseComponent implements OnInit {
     });
   }
   fetchMovies() {
-    this.http.get('http://localhost:3000/movies', {}).subscribe((res) => {
+    this.userId = localStorage.getItem('userId');
+    console.log(this.userId)
+    this.http.get(`http://localhost:3000/movies/${this.userId}`, {}).subscribe((res) => {
       this.moviesdata = res;
       console.log(this.moviesdata)
       this.lengthItems = this.moviesdata.length;

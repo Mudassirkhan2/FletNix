@@ -1,3 +1,34 @@
-<h1>
-    login works!
-</h1>
+<main class="relative flex flex-col items-center justify-center min-h-screen">
+    <div class="absolute top-0 bottom-0 left-0 right-0 min-h-screen -z-10">
+        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/becb4b4a-fa87-47ab-b92b-aae2c1c6d6f7/SG-en-20231023-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+            alt="cover image " class="object-cover w-full h-full">
+    </div>
+    <section class="glassmorphismCard p-4 rounded-md shadow-lg bg-white w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
+        <h1 class="text-2xl font-bold md:text-3xl">
+            Login
+        </h1>
+        <form [formGroup]="loginForm" class="flex flex-col items-center justify-center gap-2 md:justify-end "
+            (ngSubmit)="onSubmit()">
+            <div class="flex flex-col gap-1 ">
+                <label for="email">
+                    Email
+                </label>
+                <input type="email" name="email" placeholder="johndoe@gmail.com" class="p-2 rounded-md  w-[250px]"
+                    required formControlName="email">
+            </div>
+            <div class="flex flex-col gap-1 mt-4">
+                <label for="password">
+                    Password
+                </label>
+                <input name="password" type="password" placeholder="********" class="p-2 rounded-md  w-[250px]"
+                    formControlName="password" minlength="6" required>
+            </div>
+            <ng-container *ngIf="error">
+                <p class="text-red-400">{{errorMessage}}</p>
+            </ng-container>
+            <button type="submit" class="p-2 px-4 mt-2 text-white bg-blue-400 rounded-md">Login</button>
+        </form>
+        <a href="/register" class="mt-2 text-center text-blue-400 md:!mt-8 ">Don't have an account?</a>
+    </section>
+
+</main>
