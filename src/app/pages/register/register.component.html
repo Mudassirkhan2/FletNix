@@ -1,3 +1,31 @@
-<div>
-    register works
-</div>
+<main class="flex flex-col items-center justify-center min-h-screen">
+    <form [formGroup]="searchForm" class="flex flex-col items-center justify-center gap-2 md:justify-end"
+        (ngSubmit)="onSubmit()">
+        <div class="flex flex-col gap-1 ">
+            <label for="email">
+                Email
+            </label>
+            <input type="email" name="email" placeholder="johndoe@gmail.com" class="p-2 rounded-md  w-[250px]" required
+                formControlName="email">
+        </div>
+        <div class="flex flex-col gap-1 mt-4">
+            <label for="password">
+                Password
+            </label>
+            <input name="password" type="password" placeholder="********" class="p-2 rounded-md  w-[250px]"
+                formControlName="password" minlength="6" required>
+        </div>
+        <div class="flex flex-col gap-1 mt-4">
+            <label for="age">
+                Age
+            </label>
+            <input name="age" type="number" placeholder="age" class="p-2 rounded-md  w-[250px]" formControlName="age"
+                required min="0">
+        </div>
+        <ng-container *ngIf="error">
+            <p class="text-red-400">Please fill in all the fields</p>
+        </ng-container>
+        <button type="submit" class="p-2 mt-2 text-white bg-blue-400 rounded-md">Register</button>
+    </form>
+    <a href="/login" class="mt-2 text-blue-400">Already have an account?</a>
+</main>

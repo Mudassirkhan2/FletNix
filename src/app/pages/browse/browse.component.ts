@@ -8,7 +8,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-browse',
   standalone: true,
-  imports: [MatPaginatorModule, RouterModule, ReactiveFormsModule, FormsModule],
+  imports: [MatPaginatorModule, RouterModule, ReactiveFormsModule, FormsModule,],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.css'
 })
